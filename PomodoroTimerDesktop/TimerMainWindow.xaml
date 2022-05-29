@@ -36,11 +36,11 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom">
             <Button Name="StartPauseButton" Background="#E71341" 
-            Foreground="White" Content="Start" FontSize="20" FontFamily="Calibri"/>
+            Foreground="White" Content="Start" FontSize="20" FontFamily="Calibri" Cursor="Hand"/>
             <Button Name="OptionsButton" Background="#E71341" 
-            Foreground="White" Content="Options" FontSize="20" FontFamily="Calibri" FontStyle="Normal"/>
+            Foreground="White" Content="Options" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand"/>
             <Button Name="QuitButton" Background="#E71341" 
-            Foreground="White" Content="Quit" FontSize="20" FontFamily="Calibri" FontStyle="Normal"/>
+            Foreground="White" Content="Quit" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Window>
