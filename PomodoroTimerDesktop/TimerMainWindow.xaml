@@ -5,18 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PomodoroTimerDesktop"
         mc:Ignorable="d"
-        Title="Pomodoro Timer" Height="300" Width="250"
+        Title="Pomodoro Timer" Height="200" Width="250"
         ResizeMode="NoResize">
-    <Grid Background="#EF2D56">
+    <Grid x:Name="grid" Background="#EF2D56">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition x:Name="CenterColumn" Width="*"/>
+            <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
+
+        <TextBlock 
+            Background="#FF4A71"
+            Foreground="White"
+            Grid.Column="1" 
+            Grid.Row="1" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            FontSize="40"
+            FontFamily="Calibri"
+            FontStyle="Normal" 
+            TextAlignment="Center" Margin="0,0,0,3" MinWidth="{Binding ActualWidth, ElementName=grid, Mode=OneWay}">
+            25:00
+        </TextBlock>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom">
+            <Button Name="StartPauseButton" Background="#E71341" 
+            Foreground="White" Content="Start" FontSize="20" FontFamily="Calibri"/>
+            <Button Name="OptionsButton" Background="#E71341" 
+            Foreground="White" Content="Options" FontSize="20" FontFamily="Calibri" FontStyle="Normal"/>
+            <Button Name="QuitButton" Background="#E71341" 
+            Foreground="White" Content="Quit" FontSize="20" FontFamily="Calibri" FontStyle="Normal"/>
+        </StackPanel>
     </Grid>
 </Window>
