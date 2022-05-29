@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PomodoroTimerDesktop"
         mc:Ignorable="d"
-        Title="Pomodoro Timer" Height="300" Width="250">
+        Title="Pomodoro Timer" Height="300" Width="250"
+        ResizeMode="NoResize">
     <Grid Background="#EF2D56">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
