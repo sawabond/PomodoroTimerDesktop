@@ -7,4 +7,8 @@
     <ApplicationIcon>timer.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
 </Project>
