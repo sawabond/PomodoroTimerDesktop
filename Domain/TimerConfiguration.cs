@@ -1,11 +1,13 @@
-﻿using System.Timers;
-
-namespace Domain
+﻿namespace Domain
 {
     public class TimerConfiguration
     {
-        public int Minutes { get; set; }
+        public int MinutesToWork { get; set; } = 25;
 
-        public int Seconds { get; set; }
+        public int SecondsToWork { get; set; } = 0;
+
+        public int MinutesToRest { get; set; } = 5;
+
+        public int SecondsToRest { get; set; } = 0;
     }
 }

@@ -8,7 +8,7 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-            var pt = new PomodoroTimer(new TimerConfiguration { Minutes = 0, Seconds = 3 });
+            var pt = new PomodoroTimer(new TimerConfiguration { MinutesToWork = 0, SecondsToWork = 3 });
 
             Console.WriteLine(pt.ToString());
 

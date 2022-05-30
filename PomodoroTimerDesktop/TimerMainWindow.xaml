@@ -39,7 +39,7 @@
             <Button Name="StartPauseButton" Background="#E71341" 
             Foreground="White" Content="Start" FontSize="20" FontFamily="Calibri" Cursor="Hand" Click="StartPauseButton_Click"/>
             <Button Name="ResetButton" Background="#E71341" 
-            Foreground="White" Content="Reset" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand"/>
+            Foreground="White" Content="Reset" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand" Click="ResetButton_Click"/>
             <Button Name="OptionsButton" Background="#E71341" 
             Foreground="White" Content="Options" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand"/>
             <Button Name="QuitButton" Background="#E71341" 

@@ -25,10 +25,15 @@ namespace Domain
 
         public PomodoroTimer(TimerConfiguration configuration) : this()
         {
+            if (configuration is null)
+            {
+                throw new ArgumentNullException(nameof(configuration));
+            }
+
             _configuration = configuration;
 
-            _minutes = _configuration.Minutes;
-            _seconds = _configuration.Seconds;
+            _minutes = _configuration.MinutesToWork;
+            _seconds = _configuration.SecondsToWork;
         }
         public bool IsRunning { get => _timer.Enabled; }
 
@@ -52,6 +57,25 @@ namespace Domain
             _timer.Stop();
         }
 
+        public void Reset()
+        {
+            Stop();
+
+            switch (_mode)
+            {
+                case TimerMode.Work:
+                    _minutes = _configuration.MinutesToWork;
+                    _seconds = _configuration.SecondsToWork;
+                    break;
+                case TimerMode.Rest:
+                    _minutes = _configuration.MinutesToRest;
+                    _seconds = _configuration.SecondsToRest;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public override string ToString()
         {
             var minutes = _minutes.ToString().PadLeft(2, '0');
@@ -62,6 +86,8 @@ namespace Domain
 
         private void TimeFinished(object sender, EventArgs e)
         {
+            Stop();
+
             switch (_mode)
             {
                 case TimerMode.Work:
@@ -75,7 +101,7 @@ namespace Domain
                     break;
             }
 
-            Stop();
+            Reset();
         }
 
         private void ProceedTimerElapsed(object sender, ElapsedEventArgs e)

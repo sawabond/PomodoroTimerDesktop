@@ -10,7 +10,7 @@ namespace PomodoroTimerDesktop
     public partial class TimerMainWindow : Window
     {
         private readonly PomodoroTimer _timer;
-        private readonly TimerConfiguration _configuration = new TimerConfiguration { Minutes = 0, Seconds = 02 };
+        private readonly TimerConfiguration _configuration = new TimerConfiguration();
 
         public TimerMainWindow()
         {
@@ -26,21 +26,12 @@ namespace PomodoroTimerDesktop
 
         private bool IsRunning => _timer.IsRunning;
 
-        private void OnTimeChanged(object sender, EventArgs e)
-        {
-            Dispatcher.Invoke(() =>
-            {
-                Timer.Text = _timer.ToString();
-            });
-        }
+        private void OnTimeChanged(object sender, EventArgs e) => UpdateTimerView();
 
         private void OnTimeFinished(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
-            {
-                StartPauseButton.Content = "Start";
-            });
-
+            UpdateStartPauseButton();
+            UpdateTimerView();
             MessageBox.Show("time finished!");
         }
 
@@ -54,13 +45,21 @@ namespace PomodoroTimerDesktop
             }
 
             _timer.Start();
-
-            StartPauseButton.Content = IsRunning ? "Pause" : "Start";
+            UpdateStartPauseButton();
         }
 
-        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        private void QuitButton_Click(object sender, RoutedEventArgs e) => Close();
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            _timer.Reset();
+
+            UpdateTimerView();
+            UpdateStartPauseButton();
         }
+
+        private void UpdateTimerView() => Dispatcher.Invoke(() => Timer.Text = _timer.ToString());
+
+        private void UpdateStartPauseButton() => Dispatcher.Invoke(() => StartPauseButton.Content = IsRunning ? "Pause" : "Start");
     }
 }
