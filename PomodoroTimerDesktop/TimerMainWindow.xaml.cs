@@ -1,5 +1,6 @@
 ﻿using Domain;
 using System;
+using System.Media;
 using System.Windows;
 
 namespace PomodoroTimerDesktop
@@ -9,19 +10,25 @@ namespace PomodoroTimerDesktop
     /// </summary>
     public partial class TimerMainWindow : Window
     {
-        private readonly PomodoroTimer _timer;
+        private readonly SoundPlayer _soundPlayer = new SoundPlayer();
+        private PomodoroTimer _timer;
         private readonly TimerConfiguration _configuration = new TimerConfiguration();
 
         public TimerMainWindow()
         {
             InitializeComponent();
+            SetupProgramBeforeWork();
+        }
 
+        private void SetupProgramBeforeWork()
+        {
             _timer = new PomodoroTimer(_configuration);
-
             _timer.AddOnTick(OnTimeChanged);
             _timer.AddOnTimeFinished(OnTimeFinished);
 
-            Timer.Text = _timer.ToString();
+            _soundPlayer.Stream = Properties.Resources.TimeFinishedNotification;
+
+            UpdateTimerView();
         }
 
         private bool IsRunning => _timer.IsRunning;
@@ -32,6 +39,7 @@ namespace PomodoroTimerDesktop
         {
             UpdateStartPauseButton();
             UpdateTimerView();
+            PlaySoundWorkFinished();
 
             MessageBox.Show("Time finished!", "Attention!", MessageBoxButton.OK);
         }
@@ -62,5 +70,7 @@ namespace PomodoroTimerDesktop
         private void UpdateTimerView() => Dispatcher.Invoke(() => Timer.Text = _timer.ToString());
 
         private void UpdateStartPauseButton() => Dispatcher.Invoke(() => StartPauseButton.Content = IsRunning ? "Pause" : "Start");
+
+        private void PlaySoundWorkFinished() => Dispatcher.Invoke(() => _soundPlayer.Play());
     }
 }
