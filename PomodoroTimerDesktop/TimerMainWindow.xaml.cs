@@ -36,7 +36,11 @@ namespace PomodoroTimerDesktop
 
         private void OnTimeFinished(object sender, EventArgs e)
         {
-            StartPauseButton.Content = "Start";
+            Dispatcher.Invoke(() =>
+            {
+                StartPauseButton.Content = "Start";
+            });
+
             MessageBox.Show("time finished!");
         }
 
