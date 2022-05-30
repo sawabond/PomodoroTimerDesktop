@@ -32,7 +32,8 @@ namespace PomodoroTimerDesktop
         {
             UpdateStartPauseButton();
             UpdateTimerView();
-            MessageBox.Show("time finished!");
+
+            MessageBox.Show("Time finished!", "Attention!", MessageBoxButton.OK);
         }
 
         private void StartPauseButton_Click(object sender, RoutedEventArgs e)
