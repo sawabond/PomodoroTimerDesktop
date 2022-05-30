@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using System.Timers;
+
+namespace Domain
 {
     public class TimerConfiguration
     {

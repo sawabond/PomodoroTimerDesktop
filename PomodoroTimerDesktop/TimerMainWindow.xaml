@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PomodoroTimerDesktop"
         mc:Ignorable="d"
-        Title="Pomodoro Timer" Height="200" Width="250"
+        Title="Pomodoro Timer" Height="250" Width="250"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid x:Name="grid" Background="#EF2D56">
         <Grid.ColumnDefinitions>
@@ -20,7 +20,8 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <TextBlock 
+        <TextBlock
+            x:Name="Timer"
             Background="#FF4A71"
             Foreground="White"
             Grid.Column="1" 
@@ -30,17 +31,19 @@
             FontSize="40"
             FontFamily="Calibri"
             FontStyle="Normal" 
+            Text="{Binding Path=_timer, Mode=OneWay}"
             TextAlignment="Center" Margin="0,0,0,3" MinWidth="{Binding ActualWidth, ElementName=grid, Mode=OneWay}">
-            25:00
         </TextBlock>
 
         <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom">
             <Button Name="StartPauseButton" Background="#E71341" 
-            Foreground="White" Content="Start" FontSize="20" FontFamily="Calibri" Cursor="Hand"/>
+            Foreground="White" Content="Start" FontSize="20" FontFamily="Calibri" Cursor="Hand" Click="StartPauseButton_Click"/>
+            <Button Name="ResetButton" Background="#E71341" 
+            Foreground="White" Content="Reset" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand"/>
             <Button Name="OptionsButton" Background="#E71341" 
             Foreground="White" Content="Options" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand"/>
             <Button Name="QuitButton" Background="#E71341" 
-            Foreground="White" Content="Quit" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand"/>
+            Foreground="White" Content="Quit" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand" Click="QuitButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>
