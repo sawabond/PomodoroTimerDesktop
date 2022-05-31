@@ -13,7 +13,22 @@ namespace PomodoroTimerDesktop
         public Settings(TimerConfiguration configuration)
         {
             InitializeComponent();
+
+            DataContext = this;
+
             _configuration = configuration;
+        }
+
+        public int MinutesToWork
+        {
+            get => _configuration.MinutesToWork;
+            set => _configuration.MinutesToWork = value;
+        }
+
+        public int MinutesToRest
+        {
+            get => _configuration.MinutesToRest;
+            set => _configuration.MinutesToRest = value;
         }
     }
 }

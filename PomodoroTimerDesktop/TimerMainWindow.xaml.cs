@@ -18,16 +18,9 @@ namespace PomodoroTimerDesktop
         private readonly IFileSerializer _fileSerializer;
         private TimerConfiguration _configuration;
 
-        public TimerMainWindow()
-        {
-
-        }
-
         public TimerMainWindow(PomodoroTimer timer, TimerConfiguration configuration, IFileSerializer fileSerializer)
         {
             InitializeComponent();
-
-            _soundPlayer = new SoundPlayer();
 
             _timer = timer;
             _configuration = configuration;
