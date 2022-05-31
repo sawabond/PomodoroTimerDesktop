@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PomodoroTimerDesktop"
         mc:Ignorable="d"
-        Title="Settings" Height="450" Width="800">
-    <Grid>
-        
+        Title="Settings" Height="250" Width="250"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Background="#EF2D56">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="0.20*"/>
+            <RowDefinition Height="0.20*"/>
+            <RowDefinition Height="0.20*"/>
+            <RowDefinition Height="0.20*"/>
+            <RowDefinition Height="0.20*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" Foreground="White" FontSize="16" Text="Work minutes" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="3" Foreground="White" FontSize="16" Text="Rest minutes" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBox Grid.Column="2" Grid.Row="2" Foreground="White" FontSize="16" Text="Rest minutes" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="3" Foreground="White" FontSize="16" Text="Rest minutes" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+
+        <Button Grid.Column="1" Grid.Row="5" Name="Undo" Background="#E71341" 
+        Foreground="White" Content="Reset to defaults" FontSize="16" FontFamily="Calibri" Cursor="Hand"/>
+        <Button Grid.Column="2" Grid.Row="5" Name="Save" Background="#E71341" 
+        Foreground="White" Content="Save" FontSize="20" FontFamily="Calibri" Cursor="Hand"/>
     </Grid>
 </Window>
