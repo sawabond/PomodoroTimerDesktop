@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PomodoroTimerDesktop"
         mc:Ignorable="d"
         Title="Settings" Height="250" Width="250"
-        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        ResizeMode="NoResize">
     <Grid Background="#EF2D56">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />

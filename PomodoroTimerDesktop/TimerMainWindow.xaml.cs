@@ -15,16 +15,25 @@ namespace PomodoroTimerDesktop
     {
         private readonly SoundPlayer _soundPlayer = new SoundPlayer();
         private readonly PomodoroTimer _timer;
-        private readonly IFileSerializer _fileSerializer = new FileSerializer();
+        private readonly IFileSerializer _fileSerializer;
         private TimerConfiguration _configuration;
 
         public TimerMainWindow()
         {
+
+        }
+
+        public TimerMainWindow(PomodoroTimer timer, TimerConfiguration configuration, IFileSerializer fileSerializer)
+        {
             InitializeComponent();
 
             _soundPlayer = new SoundPlayer();
-            _timer = new PomodoroTimer();
-            _fileSerializer = new FileSerializer();
+
+            _timer = timer;
+            _configuration = configuration;
+            _fileSerializer = fileSerializer;
+
+            DataContext = this;
 
             SetupProgramBeforeWork();
         }
@@ -92,7 +101,11 @@ namespace PomodoroTimerDesktop
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             var settingsWindow = new Settings(_configuration);
-            settingsWindow.ShowDialog();
+
+            settingsWindow.Top = Top;
+            settingsWindow.Left = Left - ActualWidth;
+
+            settingsWindow.Show();
         }
     }
 }
