@@ -9,8 +9,8 @@ namespace Domain
     public class PomodoroTimer : IRunnable
     {
         private readonly Timer _timer;
-        private readonly TimerConfiguration _configuration;
-
+        
+        private TimerConfiguration _configuration;
         private EventHandler _timeFinished;
         private int _minutes;
         private int _seconds;
@@ -25,6 +25,12 @@ namespace Domain
 
         public PomodoroTimer(TimerConfiguration configuration) : this()
         {
+            Configure(configuration);
+        }
+        public bool IsRunning { get => _timer.Enabled; }
+
+        public void Configure(TimerConfiguration configuration)
+        {
             if (configuration is null)
             {
                 throw new ArgumentNullException(nameof(configuration));
@@ -35,7 +41,6 @@ namespace Domain
             _minutes = _configuration.MinutesToWork;
             _seconds = _configuration.SecondsToWork;
         }
-        public bool IsRunning { get => _timer.Enabled; }
 
         public void AddOnTick(ElapsedEventHandler handler)
         {

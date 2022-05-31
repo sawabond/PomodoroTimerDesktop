@@ -41,7 +41,7 @@
             <Button Name="ResetButton" Background="#E71341" 
             Foreground="White" Content="Reset" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand" Click="ResetButton_Click"/>
             <Button Name="OptionsButton" Background="#E71341" 
-            Foreground="White" Content="Options" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand"/>
+            Foreground="White" Content="Settings" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand" Click="SettingsButton_Click"/>
             <Button Name="QuitButton" Background="#E71341" 
             Foreground="White" Content="Quit" FontSize="20" FontFamily="Calibri" FontStyle="Normal" Cursor="Hand" Click="QuitButton_Click"/>
         </StackPanel>
