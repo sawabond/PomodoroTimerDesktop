@@ -26,12 +26,12 @@
 
         <TextBlock Grid.Column="1" Grid.Row="2" Foreground="White" FontSize="16" Text="Work minutes" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="3" Foreground="White" FontSize="16" Text="Rest minutes" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <TextBox Grid.Column="2" Grid.Row="2" Foreground="Black" FontSize="16" Text="{Binding Path=MinutesToWork, Mode=TwoWay}" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
-        <TextBox Grid.Column="2" Grid.Row="3" Foreground="Black" FontSize="16" Text="{Binding Path=MinutesToRest, Mode=TwoWay}" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+        <TextBox x:Name="WorkMinutesTextBox" Grid.Column="2" Grid.Row="2" Foreground="Black" FontSize="16" Text="{Binding Path=MinutesToWork, Mode=OneWay}" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+        <TextBox x:Name="RestMinutesTextBox" Grid.Column="2" Grid.Row="3" Foreground="Black" FontSize="16" Text="{Binding Path=MinutesToRest, Mode=OneWay}" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
 
         <Button Grid.Column="1" Grid.Row="5" Name="Undo" Background="#E71341" 
-        Foreground="White" Content="Reset to defaults" FontSize="16" FontFamily="Calibri" Cursor="Hand"/>
+        Foreground="White" Content="Reset to defaults" FontSize="16" FontFamily="Calibri" Cursor="Hand" Click="ResetToDefaults_Click"/>
         <Button Grid.Column="2" Grid.Row="5" Name="Save" Background="#E71341" 
-        Foreground="White" Content="Save" FontSize="20" FontFamily="Calibri" Cursor="Hand"/>
+        Foreground="White" Content="Save" FontSize="20" FontFamily="Calibri" Cursor="Hand" Click="Save_Click"/>
     </Grid>
 </Window>

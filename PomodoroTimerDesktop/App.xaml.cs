@@ -25,6 +25,8 @@ namespace PomodoroTimerDesktop
         private void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<TimerMainWindow>();
+            services.AddSingleton<Settings>();
+
             services.AddSingleton<PomodoroTimer>();
             services.AddSingleton<TimerConfiguration>();
             services.AddSingleton<IFileSerializer, FileSerializer>();
