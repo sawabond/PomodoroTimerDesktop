@@ -1,7 +1,6 @@
 ﻿using Domain;
 using PomodoroTimerDesktop.Abstractions;
 using PomodoroTimerDesktop.Constants;
-using PomodoroTimerDesktop.Models;
 using System;
 using System.Media;
 using System.Windows;
