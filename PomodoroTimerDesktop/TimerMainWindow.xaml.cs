@@ -14,22 +14,28 @@ namespace PomodoroTimerDesktop
     public partial class TimerMainWindow : Window
     {
         private readonly SoundPlayer _soundPlayer = new SoundPlayer();
+        private readonly PomodoroTimer _timer;
         private readonly IFileSerializer _fileSerializer = new FileSerializer();
         private TimerConfiguration _configuration;
-        private PomodoroTimer _timer;
-        private IFileSerializer fileSerializer = new FileSerializer();
 
         public TimerMainWindow()
         {
             InitializeComponent();
+
+            _soundPlayer = new SoundPlayer();
+            _timer = new PomodoroTimer();
+            _fileSerializer = new FileSerializer();
+
             SetupProgramBeforeWork();
         }
+
+        private bool IsRunning => _timer.IsRunning;
 
         private void SetupProgramBeforeWork()
         {
             ReadConfiguration();
 
-            _timer = new PomodoroTimer(_configuration);
+            _timer.Configure(_configuration);
             _timer.AddOnTick(OnTimeChanged);
             _timer.AddOnTimeFinished(OnTimeFinished);
 
@@ -37,13 +43,11 @@ namespace PomodoroTimerDesktop
 
             UpdateTimerView();
         }
-        
+
         private void ReadConfiguration()
         {
-            _configuration = fileSerializer.Deserialize<TimerConfiguration>(FileConstants.SettingsName);
+            _configuration = _fileSerializer.Deserialize<TimerConfiguration>(FileConstants.SettingsName);
         }
-
-        private bool IsRunning => _timer.IsRunning;
 
         private void OnTimeChanged(object sender, EventArgs e) => UpdateTimerView();
 
