@@ -1,4 +1,7 @@
 ﻿using Domain;
+using PomodoroTimerDesktop.Abstractions;
+using PomodoroTimerDesktop.Constants;
+using PomodoroTimerDesktop.Models;
 using System;
 using System.Media;
 using System.Windows;
@@ -11,8 +14,10 @@ namespace PomodoroTimerDesktop
     public partial class TimerMainWindow : Window
     {
         private readonly SoundPlayer _soundPlayer = new SoundPlayer();
+        private readonly IFileSerializer _fileSerializer = new FileSerializer();
+        private TimerConfiguration _configuration;
         private PomodoroTimer _timer;
-        private readonly TimerConfiguration _configuration = new TimerConfiguration();
+        private IFileSerializer fileSerializer = new FileSerializer();
 
         public TimerMainWindow()
         {
@@ -22,6 +27,8 @@ namespace PomodoroTimerDesktop
 
         private void SetupProgramBeforeWork()
         {
+            ReadConfiguration();
+
             _timer = new PomodoroTimer(_configuration);
             _timer.AddOnTick(OnTimeChanged);
             _timer.AddOnTimeFinished(OnTimeFinished);
@@ -29,6 +36,11 @@ namespace PomodoroTimerDesktop
             _soundPlayer.Stream = Properties.Resources.TimeFinishedNotification;
 
             UpdateTimerView();
+        }
+        
+        private void ReadConfiguration()
+        {
+            _configuration = fileSerializer.Deserialize<TimerConfiguration>(FileConstants.SettingsName);
         }
 
         private bool IsRunning => _timer.IsRunning;
@@ -72,5 +84,10 @@ namespace PomodoroTimerDesktop
         private void UpdateStartPauseButton() => Dispatcher.Invoke(() => StartPauseButton.Content = IsRunning ? "Pause" : "Start");
 
         private void PlaySoundWorkFinished() => Dispatcher.Invoke(() => _soundPlayer.Play());
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            _fileSerializer.Serialize(_configuration, "config");
+        }
     }
 }
