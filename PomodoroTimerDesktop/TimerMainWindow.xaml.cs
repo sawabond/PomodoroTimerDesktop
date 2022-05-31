@@ -91,7 +91,8 @@ namespace PomodoroTimerDesktop
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            _fileSerializer.Serialize(_configuration, "config");
+            var settingsWindow = new Settings(_configuration);
+            settingsWindow.ShowDialog();
         }
     }
 }
